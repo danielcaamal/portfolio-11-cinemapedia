@@ -2,3 +2,4 @@ export 'package:portfolio_11_cinemapedia_app/presentation/widgets/movies/movies_
 export 'package:portfolio_11_cinemapedia_app/presentation/widgets/movies/movie_horizontal_listview.dart';
 export 'package:portfolio_11_cinemapedia_app/presentation/widgets/shared/custom_app_bar.dart';
 export 'package:portfolio_11_cinemapedia_app/presentation/widgets/shared/custom_bottom_navigation_bar.dart';
+export 'package:portfolio_11_cinemapedia_app/presentation/widgets/shared/full_screen_loader.dart';
