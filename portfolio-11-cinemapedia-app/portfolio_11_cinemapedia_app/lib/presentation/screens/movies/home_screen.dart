@@ -35,6 +35,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
   @override
   Widget build(BuildContext context) {
     final moviesSlideShow = ref.watch(moviesSlideShowProvider);
+    final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
 
     if (moviesSlideShow.isEmpty) {
       return const Center(
@@ -47,8 +48,16 @@ class _HomeViewState extends ConsumerState<HomeView> {
         const CustomAppBar(),
         MoviesSlideShow(
           movies: moviesSlideShow,
+        ),
+        MovieHorizontalListView(
+          movies: nowPlayingMovies,
+          title: 'Now playing',
+          // Date
+          subtitle: getLocalTime(),
         )
       ],
     );
   }
+
+  String getLocalTime() => DateTime.now().toLocal().toString().split(' ')[0];
 }
