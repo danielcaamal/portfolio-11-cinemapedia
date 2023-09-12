@@ -54,6 +54,7 @@ class _MovieHorizontalListViewState extends State<MovieHorizontalListView> {
             title: widget.title,
             subtitle: widget.subtitle,
           ),
+        const SizedBox(height: 5),
         Expanded(
             child: ListView.builder(
           controller: scrollController,
