@@ -1,6 +1,7 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio_11_cinemapedia_app/domain/entities/movie.dart';
 
 class MoviesSlideShow extends StatelessWidget {
@@ -33,7 +34,7 @@ class MoviesSlideShow extends StatelessWidget {
 
 class _Slide extends StatelessWidget {
   final Movie movie;
-  const _Slide({super.key, required this.movie});
+  const _Slide({required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +62,9 @@ class _Slide extends StatelessWidget {
                 return const DecoratedBox(
                     decoration: BoxDecoration(color: Colors.black12));
               }
-              return FadeIn(child: child);
+              return GestureDetector(
+                  child: FadeIn(child: child),
+                  onTap: () => context.push('/movie/${movie.id}'));
             },
           ),
         ),

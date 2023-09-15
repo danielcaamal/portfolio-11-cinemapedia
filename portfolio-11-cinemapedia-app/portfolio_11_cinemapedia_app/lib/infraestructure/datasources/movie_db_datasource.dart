@@ -4,6 +4,7 @@ import 'package:portfolio_11_cinemapedia_app/config/constants/environment.dart';
 import 'package:portfolio_11_cinemapedia_app/domain/datasources/movies_datasource.dart';
 import 'package:portfolio_11_cinemapedia_app/domain/entities/movie.dart';
 import 'package:portfolio_11_cinemapedia_app/infraestructure/mappers/movie_mapper.dart';
+import 'package:portfolio_11_cinemapedia_app/infraestructure/models/moviedb/movie_db_movie_detail.dart';
 import 'package:portfolio_11_cinemapedia_app/infraestructure/models/moviedb/movie_db_response.dart';
 
 class MovieDbDataSource extends MoviesDataSource {
@@ -24,6 +25,11 @@ class MovieDbDataSource extends MoviesDataSource {
         .toList();
 
     return movies;
+  }
+
+  Movie _jsonToMovie(Map<String, dynamic> json) {
+    final movieDb = MovieDetailMovieDb.fromJson(json);
+    return MovieMapper.movieDetailMovieDbToMovie(movieDb);
   }
 
   @override
@@ -56,5 +62,14 @@ class MovieDbDataSource extends MoviesDataSource {
       'page': page,
     });
     return _jsonToMovies(response.data);
+  }
+
+  @override
+  Future<Movie> getMovieById(int id) async {
+    final response = await dio.get('/movie/$id');
+    if (response.statusCode != 200) {
+      throw Exception('Error getting movie by id');
+    }
+    return _jsonToMovie(response.data);
   }
 }

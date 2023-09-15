@@ -1,5 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio_11_cinemapedia_app/config/helpers/human_formats.dart';
 import 'package:portfolio_11_cinemapedia_app/domain/entities/movie.dart';
 
@@ -90,7 +91,11 @@ class _Slide extends StatelessWidget {
                   movie.posterPath,
                   width: 150,
                   loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return FadeIn(child: child);
+                    if (loadingProgress == null) {
+                      return GestureDetector(
+                          child: FadeIn(child: child),
+                          onTap: () => context.push('/movie/${movie.id}'));
+                    }
                     return const Center(
                         child: CircularProgressIndicator(
                       strokeWidth: 2,

@@ -1,6 +1,5 @@
 import 'dart:convert';
-
-import 'package:portfolio_11_cinemapedia_app/infraestructure/models/moviedb/movie_movie_db.dart';
+import 'package:portfolio_11_cinemapedia_app/infraestructure/models/moviedb/movie_db_movie_response.dart';
 
 MovieDbResponse movieDbResponseFromJson(String str) =>
     MovieDbResponse.fromJson(json.decode(str));
