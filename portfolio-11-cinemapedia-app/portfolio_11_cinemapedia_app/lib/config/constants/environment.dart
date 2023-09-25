@@ -11,4 +11,7 @@ class Environment {
       dotenv.env['THE_MOVIE_DB_BASE_IMAGE_URL'] ?? 'No url found';
 
   static String NO_IMAGE_URL = dotenv.env['NO_IMAGE_URL'] ?? 'No url found';
+
+  static String NO_IMAGE_PROFILE_URL =
+      dotenv.env['NO_IMAGE_PROFILE_URL'] ?? 'No url found';
 }
